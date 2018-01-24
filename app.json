@@ -12,6 +12,9 @@
     "pages/more/more",
     "pages/more/issues",
     "pages/more/about",
+    "pages/core/dc/dc",
+    "pages/core/dc/dc_apply",
+    "pages/core/dc/dc_confirm",
     "pages/core/kb/kb",
     "pages/core/cj/cj",
     "pages/core/ks/ks",
@@ -50,13 +53,13 @@
       },
       {
         "pagePath": "pages/news/news",
-        "text": "资讯",
+        "text": "相关",
         "iconPath": "images/index/news.png",
         "selectedIconPath": "images/index/news@active.png"
       },
       {
         "pagePath": "pages/more/more",
-        "text": "更多",
+        "text": "我的",
         "iconPath": "images/index/more.png",
         "selectedIconPath": "images/index/more@active.png"
       }

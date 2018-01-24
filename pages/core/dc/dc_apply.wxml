@@ -1,0 +1,37 @@
+<!--bx_apply.wxml-->
+<view class="container">
+  <view wx:if="{{remind}}" class="remind-box">
+    <image wx:if="{{remind == '加载中'}}" class="remind-img" src="/images/index/loading.gif"></image>
+    <block wx:else>
+      <image class="remind-img" src="/images/index/nothing.png"></image>
+      <text class="remind-text">{{remind}}</text>
+    </block>
+  </view>
+  <block wx:else>
+    <view>
+      <scroll-view  scroll-x="true" class="tab-h" scroll-left="{{scrollLeft}}">
+       <view wx:for="{{shopList}}" wx:key="*this"   class="tab-item {{currentTab==index?'active':''}}" data-current="{{index}}" bindtap="swichNav">{{item.shop}}</view>
+      </scroll-view>
+      <swiper class="tab-content" current="{{currentTab}}" duration="300" bindchange="switchTab" style="height:{{winHeight}}rpx">
+        <swiper-item wx:for="{{shopList}}" wx:key="*this">
+           <scroll-view scroll-y="true" class="scoll-h">
+            <block wx:for="{{shopList[currentTab].food}}" wx:key="*this">
+              <view class="item-ans">
+                <view class="avatar">
+                  <image class="img" src="http://ookzqad11.bkt.clouddn.com/avatar.png"></image>
+                </view>
+                <view class="expertInfo">
+                  <view class="name">{{item.food}}</view>
+                  <view class="tag">所属分类：{{item.category.category
+}}</view>
+                  <view class="answerHistory">共 {{item.count}} 次点过 </view>
+                </view>
+                <navigator url="/pages/core/dc/dc_confirm" class="askBtn">选择</navigator>
+              </view>
+            </block>
+          </scroll-view> 
+        </swiper-item>
+      </swiper>
+    </view>
+  </block>
+</view>

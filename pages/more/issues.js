@@ -41,13 +41,16 @@ Page({
     if(app.g_status){ return; }
     wx.showNavigationBarLoading();
     wx.request({
-      url: app._server + '/api/get_feedback.php',
+      url: app._server + '/api/feedback/list',
       method: 'POST',
-      data: app.key({
-        openid: app._user.openid
-      }),
+      data: {
+        id:app._user.we.id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       success: function(res){
-        if(res.data.status === 200){
+        if(res.data.code === 200){
           var list = res.data.data;
           if(list && list.length){
             _this.setData({

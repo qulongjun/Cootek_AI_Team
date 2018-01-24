@@ -121,7 +121,7 @@ page .navigator-hover{
   height: 30rpx;
 }
 .card-item-bd{
-  padding: 20rpx 25rpx 30rpx 0;
+  padding: 20rpx 25rpx 0 0;
   margin-left: 30rpx;
   display: flex;
   flex-direction: column;
@@ -232,7 +232,7 @@ page .navigator-hover{
   align-items: flex-end;
   justify-content: center;
   font-weight: bold;
-  padding: 25rpx 0 30rpx;
+  padding: 30rpx 0 30rpx;
 }
 .ykt-balance-text{
   font-size: 17pt;

@@ -1,0 +1,30 @@
+<!--bx_apply.wxml-->
+<view class="container">
+  <view wx:if="{{remind}}" class="remind-box">
+    <image wx:if="{{remind == '加载中'}}" class="remind-img" src="/images/index/loading.gif"></image>
+    <block wx:else>
+      <image class="remind-img" src="/images/index/nothing.png"></image>
+      <text class="remind-text">{{remind}}</text>
+    </block>
+  </view>
+  <block wx:else>
+     <view class="repair-detail">
+          <view class="reporter-user reporter-detail-item">
+                <text class="reporter-detail-name">订餐人</text>
+                <view class="reporter-detail-input">
+                    <input value="{{formData.Name}}" disabled="true" style='text-align:right'/>
+                </view>
+            </view>
+            <view class="reporter-user reporter-detail-item">
+                <text class="reporter-detail-name">就餐日期</text>
+                <view class="reporter-detail-input">
+                    <input value="{{formData.Time}}" disabled="true" style='text-align:right'/>
+                </view>
+            </view>
+        </view> 
+ 
+     <view class="submit-declare" bindtap="submitApply">
+      <text>下一步</text>
+    </view> 
+  </block>
+</view>
