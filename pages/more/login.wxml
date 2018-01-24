@@ -1,0 +1,56 @@
+<!--login.wxml-->
+<view class="container">
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="/images/index/loading.gif"></image>
+  </view>
+  <block wx:else>
+    <image class="title" src="/images/more/title.png"></image>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+          <image class="logo" src="/images/more/logo.png"></image>
+          <image class="wave" src="/images/more/wave.png" mode="aspectFill"></image>
+          <image class="wave wave-bg" src="/images/more/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd">
+        <form class="login-form">
+          <view class="input-group {{userid_focus ? 'active' : ''}}">
+            <text class="input-label">真实姓名</text>
+            <input type="text" cursor-spacing="30" id="userid"  placeholder="请输入真实姓名" bindinput="useridInput" bindfocus="inputFocus" bindblur="inputBlur" />
+          </view>
+          <view class="input-group {{passwd_focus ? 'active' : ''}}">
+            <text class="input-label">联系手机</text>
+            <input cursor-spacing="30" id="passwd" placeholder="请输入联系方式" bindinput="telInput" bindfocus="inputFocus" bindblur="inputBlur" />
+          </view>
+          <view class="login-help" bindtap="showHelp">
+            <text>帮助</text>
+            <image class="login-help-img" src="/images/more/help.png"></image>
+          </view>
+        </form>
+        <view class="confirm-btn" bindtap="bind">
+            <text>绑定身份</text>
+        </view>
+      </view>
+
+      <view class="help" id="help" wx:if="{{help_status}}" bindtap="tapHelp">
+        <view class="box">
+          <view class="box-hd">
+            <text class="box-title">帮助</text>
+            <image class="box-close" src="/images/more/close.png" bindtap="hideHelp"></image>
+          </view>
+          <view class="box-bd">
+            <view class="help-q">1、为什么要绑定姓名和手机？</view>
+            <view class="help-a">
+              <text>小程序是一个面向公众的APP，所有用户均可以通过二维码或搜索名称进入。由于该系统面向触宝AI实验室团队成员，因此需要进行二次验证身份才能访问敏感数据。</text>
+            </view>
+            <view class="help-q">2、需要解绑？</view>
+            <view class="help-a">
+              <text>请直接联系小程序开发者（Longjun.qu@cootek.cn）进行解除绑定操作</text>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </block>
+
+</view>

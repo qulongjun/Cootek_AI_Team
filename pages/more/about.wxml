@@ -1,0 +1,54 @@
+<!--about.wxml-->
+<view class="container">
+  <view class="header">
+    <view class="black-cover"></view>
+    <image class="logo" src="/images/more/logo.png"></image>
+    <image class="title" src="/images/more/title.png"></image>
+  </view>
+  <view class="content">
+    <view class="version">
+      <view class="version-title">
+        <text class="title-name">触宝AI实验室</text>
+        <text class="version-text">{{version}}</text>
+        <text class="version-text">内测中</text>
+      </view>
+      <view bindtap="toggleLog">
+        <text class="version-log-link update-log" wx:if="{{!showLog}}">更新日志</text> 
+        <text class="version-log-link" wx:else>简介</text> 
+      </view>
+    </view>
+    <view class="describe" wx:if="{{!showLog}}">
+        <text class="desc-title">简介</text>
+        <view class="desc-list">
+          <text class="desc-list-item">官网：暂无</text>
+          <text class="desc-list-item">Github：https://github.com/qulongjun/daliy_order</text>
+        </view>
+        <text class="desc-content">触宝AI实验室是一款微信小程序，由触宝AI实验室成员瞿龙俊开发，有别于公众号的一种全新的连接用户与服务的方式，无需下载与安装即可在微信内被便捷地获取和传播，同时具有出色的使用体验。</text>
+        <text class="desc-content">触宝AI实验室是碎片化、一站式、一体化团队移动门户，适用于触宝AI实验室所有同事，目前已开放在线订餐功能。</text>
+    </view>
+    <view class="log-list" wx:else>
+      <view class="describe">
+          <view class="desc-title">
+            <text class="desc-v">v0.0.1 内测版</text>
+            <text class="desc-time">2018.01.30</text>
+          </view>
+          <text class="desc-content">全新发布</text>
+          <view class="desc-list">
+            <text class="desc-list-item">正式开启内测</text>
+          </view>
+          <text class="desc-content">修复BUG</text>
+          <view class="desc-list">
+            <text class="desc-list-item">暂无</text>
+          </view>
+          <text class="desc-content">优化完善</text>
+          <view class="desc-list">
+            <text class="desc-list-item">暂无</text>
+          </view>
+      </view>
+    </view>
+  </view>
+  <view class="footer">
+    <text>触宝AI实验室 · 瞿龙俊</text>
+    <text>Copyright @ {{year}} All Rights Reserved</text>
+  </view>
+</view>
