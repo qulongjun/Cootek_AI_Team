@@ -8,15 +8,15 @@ Page({
     cores: [
       [
         { id: 'dc', name: '团队订餐', disabled: false, offline_disabled: false },
-        { id: 'cj', name: '暂未开放', disabled: true, offline_disabled: false },
-        { id: 'cj', name: '暂未开放', disabled: true, offline_disabled: false },
-        { id: 'cj', name: '暂未开放', disabled: true, offline_disabled: true },
-        { id: 'cj', name: '暂未开放', disabled: true, offline_disabled: true },
-        { id: 'cj', name: '暂未开放', disabled: true, offline_disabled: false },
-        { id: 'cj', name: '暂未开放', disabled: true, offline_disabled: false },
-        { id: 'cj', name: '暂未开放', disabled: true, offline_disabled: false },
-        { id: 'cj', name: '电费查询', disabled: true, offline_disabled: false },
-        { id: 'cj', name: '暂未开放', disabled: true, offline_disabled: true }
+        { id: 'cj', name: '尚未开放', disabled: true, offline_disabled: false },
+        { id: 'cj', name: '尚未开放', disabled: true, offline_disabled: false },
+        { id: 'cj', name: '尚未开放', disabled: true, offline_disabled: true },
+        { id: 'cj', name: '尚未开放', disabled: true, offline_disabled: true },
+        { id: 'cj', name: '尚未开放', disabled: true, offline_disabled: false },
+        { id: 'cj', name: '尚未开放', disabled: true, offline_disabled: false },
+        { id: 'cj', name: '尚未开放', disabled: true, offline_disabled: false },
+        { id: 'cj', name: '尚未开放', disabled: true, offline_disabled: false },
+        { id: 'cj', name: '尚未开放', disabled: true, offline_disabled: true }
       ]
     ],
     card: {
