@@ -35,19 +35,22 @@ Page({
       url: app._server + "/api/order/history", 
       method: 'POST',
       data: {
-        id: app._user.we.id
+        userId: app._user.we.id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
       },
       success: function(res) {
-        if(res.data && res.data.status === 200) {
+        if(res.data && res.data.code === 200) {
           var list = res.data.data;
           if(!list || !list.length){
             that.setData({
-              'remind': '无申报记录'
+              'remind': '无订餐记录'
             });
           }else{
             for(var i = 0, len = list.length; i < len; i++) {
-              list[i].state = that.data.process_state[list[i].wx_wxztm];
-              list[i].wx_bt = that.convertHtmlToText(list[i].wx_bt).replace(/[\r|\n]/g, "");
+              list[i].state = that.data.process_state['未审核'];
+              list[i].wx_bt = '这是啥';
             }
             that.setData({
               'list': list,

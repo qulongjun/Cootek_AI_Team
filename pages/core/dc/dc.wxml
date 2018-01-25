@@ -52,7 +52,7 @@
                         </view>
                     </view>
                 </view> 
-                <navigator url="bx_detail?id={{item.wx_djh}}">
+                <navigator url="dc_detail?id={{item.wx_djh}}">
                     <view class="service-detail-open">
                         <text>详情</text>
                     </view>

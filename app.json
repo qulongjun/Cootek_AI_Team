@@ -15,6 +15,7 @@
     "pages/core/dc/dc",
     "pages/core/dc/dc_apply",
     "pages/core/dc/dc_confirm",
+    "pages/core/dc/dc_detail",
     "pages/core/kb/kb",
     "pages/core/cj/cj",
     "pages/core/ks/ks",

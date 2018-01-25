@@ -26,7 +26,7 @@
 }}</view>
                   <view class="answerHistory">共 {{item.count}} 次点过 </view>
                 </view>
-                <navigator url="/pages/core/dc/dc_confirm" class="askBtn">选择</navigator>
+                <navigator url="/pages/core/dc/dc_confirm?id={{item.id}}&&name={{item.food}}&&shop={{shopList[currentTab].shop}}&&category={{item.category.category}}" class="askBtn">选择</navigator>
               </view>
             </block>
           </scroll-view> 
