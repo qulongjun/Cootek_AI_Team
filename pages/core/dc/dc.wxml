@@ -14,49 +14,50 @@
         </block>
     </view>
     <block wx:else>
-        <text class="service-process-title">申报记录（{{count}}条）</text>
+        <text class="service-process-title">订餐记录（{{count}}条）</text>
         <block wx:for="{{list}}" wx:key="wx_djh">
             <view class="process review-process">
                 <view class="process-hd">
-                    <image class="review-process-icon" src="/images/core/bx/bx_{{item.state}}.png"></image>
+                    <image class="review-process-icon" src="/images/core/dc/{{item.state}}.png"></image>
                     <view class="order-number-name">
-                        <text>{{item.wx_bt}}</text>
+                        <text>{{item.food.food}}</text>
                     </view>
                     <view class="process-state">
-                        <text class="process-state-name process-state-{{item.state}}">{{item.wx_wxztm}}</text>
+                        <text class="process-state-name process-state-{{item.state}}">{{item.state==-1?"已取消":(item.state==0?"已下单":(item.state==1?"已受理":"已完成"))}}</text>
                     </view>
                 </view>
                 <view class="process-bd">
                     <view class="process-item">
                         <view class="process-item-bd">
-                            <text class="process-item-name">服务类型</text>
+                            <text class="process-item-name">商家信息</text>
                         </view>
                         <view class="process-item-ft">
-                            <text class="process-item-info">{{item.wx_bxlxm}}</text>
+                            <text class="process-item-info">{{item.food.category.shop.shop+" | "+item.food.category.category}}</text>
                         </view>
                     </view>
                     <view class="process-item">
                         <view class="process-item-bd">
-                            <text class="process-item-name">报修时间</text>
+                            <text class="process-item-name">订餐时间</text>
                         </view>
                         <view class="process-item-ft">
-                            <text class="process-item-info">{{item.wx_bxsj}}</text>
+                            <text class="process-item-info">{{item.create_time}}</text>
                         </view>
                     </view>
                     <view class="process-item">
                         <view class="process-item-bd">
-                            <text class="process-item-name">响应时间</text>
+                            <text class="process-item-name">就餐时间</text>
                         </view>
                         <view class="process-item-ft">
-                            <text class="process-item-info">{{item.xysj=='120分钟以上响应'?'未响应':item.xysj}}</text>
+                            <text class="process-item-info">{{item.order_time+" 18:30:00"}}</text>
                         </view>
                     </view>
-                </view> 
-                <navigator url="dc_detail?id={{item.wx_djh}}">
+                       <navigator url="dc_detail?id={{item.id}}">
                     <view class="service-detail-open">
                         <text>详情</text>
                     </view>
                 </navigator>
+                </view> 
+             
             </view>
         </block>
     </block>

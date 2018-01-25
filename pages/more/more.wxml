@@ -60,7 +60,7 @@
     </navigator>
   </view>
 
-  <navigator url="login" class="login-btn">
+  <navigator url="login?change_bind={{is_bind}}" class="login-btn">
     <text wx:if="{{is_bind}}">切换绑定</text>
     <text wx:else>立即绑定</text>
   </navigator>

@@ -138,7 +138,7 @@ App({
   processData: function(data){
     var _this = this;
     _this._user.is_bind = data.is_bind;
-    _this._user.openid = data.user.id;
+    _this._user.openid = data.id;
     _this._user.we = data.user;
     _this._user._time = data.time;
     _this._t = data['\x74\x6f\x6b\x65\x6e'];

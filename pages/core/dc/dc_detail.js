@@ -5,7 +5,8 @@ Page({
   data: {
     remind: '加载中',
     detail: {},   //工单详情
-    state: []     //处理详情(申请-审核-受理-派单-完工-驳回.倒序)
+    state: [],     //处理详情(申请-审核-受理-派单-完工-驳回.倒序)
+    id:''
   },
   //下拉更新
   onPullDownRefresh: function(){
@@ -13,13 +14,13 @@ Page({
   },
   onLoad: function(options){
     this.setData({
-      bxID: options.id
+      id: options.id
     });
     this.getData();
   },
   getData: function () {
     var _this = this;
-    if(!app._user.we.ykth || !_this.data.bxID){
+    if(!app._user.we.id || !_this.data.id){
       _this.setData({
         remind: '404'
       });
@@ -27,62 +28,50 @@ Page({
     }
     // 发送请求
     wx.request({
-      url: app._server + "/api/bx/get_repair_detail.php", 
+      url: app._server + "/api/order/findById", 
       method: 'POST',
-      data: app.key({
-        openid: app._user.openid,
-        "yktID": app._user.we.ykth,
-        "bxID": _this.data.bxID
-      }),
+      data: {
+        id:_this.data.id
+      },
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
       success: function(res) {
-        if(res.data && res.data.status === 200) {
+        if(res.data && res.data.code === 200) {
           var info = res.data.data;
           //报修内容过滤标签
-          info.wx_bt = _this.convertHtmlToText(info.wx_bt).replace(/[\r|\n]/g, "");
-          info.wx_bxnr = _this.convertHtmlToText(info.wx_bxnr);
+          // info.wx_bt = _this.convertHtmlToText(info.wx_bt).replace(/[\r|\n]/g, "");
+          // info.wx_bxnr = _this.convertHtmlToText(info.wx_bxnr);
           //处理详情
           var state = [{
             'type': 'refused',
-            name: '驳回',
-            status: info.wx_wxztm == '驳回',
-            list: {}
-          },{
-            'type': 'finished',
-            name: '完工',
-            status: info.wx_wxztm == '已完工',
+            name: '取消',
+            status: info.state == -1,
             list: {
-              '用时': info.wx_ysfz + '分钟'
+              '取消时间': info.cancel_time == null ? '未知' : info.cancel_time
             }
           },{
-            'type': 'dispatched',
-            name: '派单',
-            status: !!info.wx_wxgm.trim(),
+            'type': 'finished',
+            name: '完成',
+            status: info.state >=2,
             list: {
-              '承修人': info.wx_wxgm
+              '完成时间': info.finish_time == null ? '未知' : info.finish_time
             }
           },{
             'type': 'accepted',
             name: '受理',
-            status: !!info.wx_slr.trim(),
+            status: info.state>=1,
             list: {
-              '受理人': info.wx_slr,
-              '承修部门': info.wx_cxbmm,
-              '响应时间': info.xysj=='120分钟以上响应'?'未响应':info.xysj
+              '受理人': info.accepter == null ? '未知' : info.accepter.realName,
+              '响应时间': info.accept_time == null ? '未知' : info.accept_time
             }
           },{
             'type': 'waited',
-            name: '审核',
-            status: !!info.wx_shr.trim(),
-            list: {
-              '审核人': info.wx_shr
-            }
-          },{
-            'type': 'waited',
-            name: '申请',
+            name: '下单',
             status: true,
             list: {
-              '申请人': info.wx_bxr+' ('+info.wx_bxrrzm+')',
-              '申报时间': info.wx_bxsj
+              '下单人': app._user.we.realName,
+              '下单时间': info.create_time
             }
           }];
           _this.setData({
@@ -106,6 +95,46 @@ Page({
       },
       complete: function(){
         wx.stopPullDownRefresh();
+      }
+    });
+  },
+  cancelOrder:function(){
+    var _this = this;
+    wx.showModal({
+      title: '提示',
+      content: '您正在取消订单，是否继续？',
+      confirmText: '继续',
+      success: function (res) {
+        if (res.confirm) {
+          wx.request({
+            method: 'POST',
+            url: app._server + '/api/order/cancel',
+            data: {
+              id:_this.data.id
+            },
+            header: {
+              'content-type': 'application/x-www-form-urlencoded'
+            },
+            success: function (res) {
+              if (res.data && res.data.code === 200) {
+                app.showLoadToast('请稍候');
+                wx.showToast({
+                  title: '取消成功',
+                  icon: 'success',
+                  duration: 1500
+                });
+                // wx.navigateBack();
+              } else {
+                wx.hideToast();
+                app.showErrorModal(res.data.message, '绑定失败');
+              }
+            },
+            fail: function (res) {
+              wx.hideToast();
+              app.showErrorModal(res.errMsg, '取消失败');
+            }
+          });
+        }
       }
     });
   },

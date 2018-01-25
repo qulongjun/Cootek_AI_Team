@@ -34,8 +34,8 @@
   <!--卡片列表-->
   <view wx:else class="main-card">
     <!--今日订餐-->
-     <view class="main-card-item" id="ykt" >
-      <navigator url="/pages/core/dc/dc">
+     <view class="main-card-item" id="ykt" wx:if="card.dc.display">
+      <navigator url="{{card.dc.show?'/pages/core/dc/dc_detail?id='+card.dc.id:'/pages/core/dc/dc_apply'}}">
         <view class="card-item-hd">
           <image class="card-item-icon" src="/images/core/ykt.png"></image>
           <text class="card-item-name">今日订餐</text>
@@ -46,21 +46,20 @@
           </view>
           <view class="card-info-hd" wx:if="{{card.dc.show}}">
             <view class="card-info-left">
-              <text class="ykt-title">商家：小醉外卖</text>
+              <text class="ykt-title">商家：{{card.dc.food.category.shop.shop}}</text>
             </view>
             <view class="card-info-right" >
-              <view>订餐时间：2017-12-32 12:23:34</view>
+              <view>订餐时间：{{card.dc.create_time}}</view>
             </view>
           </view>
           <view class="ykt-balance" wx:if="{{card.dc.show}}">
-            <text class="ykt-balance-value">{{card.ykt.data.balance}}</text>
-            <text class="ykt-balance-text">京酱肉丝面</text>
+            <text class="ykt-balance-text">{{card.dc.food.food}}</text>
           </view>
           <block wx:if="{{card.dc.show}}">
             <text class="ykt-title">取餐时间：</text>
             <view class="ykt-cost">
               <block>
-                <text class="ykt-cost-value">2018-12-02 23:12:23</text>
+                <text class="ykt-cost-value">{{card.dc.order_time+" 18:30:00"}}</text>
               </block>
             </view>
           </block>

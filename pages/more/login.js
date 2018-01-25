@@ -4,12 +4,20 @@ var app = getApp();
 Page({
   data: {
     remind: '加载中',
+    change_bind:false,
     help_status: false,
     userid_focus: false,
     passwd_focus: false,
     userid: '',
     passwd: '',
     angle: 0
+  },
+  onLoad:function(option){
+    var _this=this;
+    console.log(option);
+    _this.setData({
+      change_bind: option.change_bind
+    });
   },
   onReady: function(){
     var _this = this;
@@ -50,7 +58,8 @@ Page({
       data: {
         id: app._user.openid,
         realName: _this.data.userid,
-        tel: _this.data.passwd
+        tel: _this.data.passwd,
+        change_bind: _this.data.change_bind||false
       },
       header: {
         'content-type': 'application/x-www-form-urlencoded'
@@ -65,9 +74,13 @@ Page({
             wx.showToast({
               title: '绑定成功',
               icon: 'success',
-              duration: 1500
+              duration: 1500,
+              success:function(){
+                setTimeout(function(){
+                  wx.navigateBack();
+                },1500);
+              }
             });
-            wx.navigateBack();
           });
         }else{
           wx.hideToast();

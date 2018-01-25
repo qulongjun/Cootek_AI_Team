@@ -80,8 +80,8 @@
 }
 .review-process-icon{
     flex-shrink: 0;
-    width: 45rpx;
-    height: 45rpx;
+    width: 50rpx;
+    height: 50rpx;
     margin-right: 15rpx;
 }
 .order-number-name{
@@ -98,19 +98,19 @@
     padding-right: 30rpx;
     font-weight: bold;
 }
-.process-state-waited{
+.process-state-0{
     color: #ffcb63;
 }
-.process-state-accepted{
+.process-state-1{
     color: #73b4ef;
 }
-.process-state-dispatched{
+/* .process-state--1{
     color: #e78ab0;
+} */
+.process-state-2{
+    color: #7acfa6;
 }
-.process-state-finished{
-    color: #9f8bea;
-}
-.process-state-refused{
+.process-state--1{
     color: #999;
 }
 .process-bd{
@@ -134,5 +134,5 @@
     text-align: center;
     padding: 25rpx;
     border-top: 1px solid #eee;
-    color: #7acfa6;
+    /* color: #7acfa6; */
 }

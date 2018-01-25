@@ -49,8 +49,8 @@ Page({
             });
           }else{
             for(var i = 0, len = list.length; i < len; i++) {
-              list[i].state = that.data.process_state['未审核'];
-              list[i].wx_bt = '这是啥';
+              // list[i].state = that.data.process_state['已完工'];
+              // list[i].food = '这是啥';
             }
             that.setData({
               'list': list,

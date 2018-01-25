@@ -20,8 +20,8 @@ Page({
       ]
     ],
     card: {
-      dc:{
-        show:true
+      dc: {
+        display:false
       }
     },
     user: {},
@@ -144,18 +144,47 @@ Page({
   },
   getCardData: function () {
     var _this = this;
-    // //判断并读取缓存
-    if (app.cache.dc) { orderRender(app.cache.dc); }
-    // if(app.cache.kb){ kbRender(app.cache.kb); }
-    // if(app.cache.ykt){ yktRender(app.cache.ykt); }
-    // if(app.cache.sdf){ sdfRender(app.cache.sdf); }
-    // if(app.cache.jy){ jyRender(app.cache.jy); }
-    if(_this.data.offline){ return; }
+    orderRender();
+    if (_this.data.offline) { return; }
     wx.showNavigationBarLoading();
-
     //团队订餐渲染
     function orderRender(info) {
+      wx.request({
+        url: app._server + '/api/order/today',
+        method: 'POST',
+        data: {
+          userId:app._user.we.id
+        },
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        success: function (res) {
+          if (res.data && res.data.code === 200) {
+            var info = res.data.data;
+            if (info) {
+              _this.setData({
+                'card.dc':info 
+              });
+              _this.setData({
+                'card.dc.show': true,
+                'card.dc.display': true
+              });
 
+            }
+          } else { 
+            if (_this.data.remind == '加载中') {
+              _this.setData({
+                remind: '',
+                'card.dc.display': true
+              });
+            }
+            // wx.stopPullDownRefresh();
+           }
+        },
+        complete: function () {
+          wx.hideNavigationBarLoading();
+        }
+      });
     }
     // //课表渲染
     // function kbRender(info){

@@ -32,52 +32,36 @@
         </view>
             
         <view class="work-sheet-panel">
-            <text class="work-sheet-title">工单详情</text>  
+            <text class="work-sheet-title">订单详情</text>  
             <view class="work-sheet">
                 <view class="work-sheet-item">
-                    <text class="work-sheet-bd">服务项目</text>
+                    <text class="work-sheet-bd">商家信息</text>
                     <view class="work-sheet-ft">
-                        <text>{{detail.wx_bxlxm}}</text>
+                        <text>{{detail.food.category.shop.shop}}</text>
                     </view>
                 </view>
                 <view class="work-sheet-item">
-                    <text class="work-sheet-bd">服务区域</text>
+                    <text class="work-sheet-bd">菜品分类</text>
                     <view class="work-sheet-ft">
-                        <text>{{detail.wx_fwqym}}</text>
+                        <text>{{detail.food.category.category}}</text>
                     </view>
                 </view>
                 <view class="work-sheet-item">
-                    <text class="work-sheet-bd">申报人</text>
+                    <text class="work-sheet-bd">菜品名称</text>
                     <view class="work-sheet-ft">
-                        <text>{{detail.wx_bxr}}</text>
+                        <text>{{detail.food.food}}</text>
                     </view>
                 </view>
-                <view class="work-sheet-item">
-                    <text class="work-sheet-bd">联系电话</text>
+                 <view class="work-sheet-item">
+                    <text class="work-sheet-bd">就餐时间</text>
                     <view class="work-sheet-ft">
-                        <text>{{detail.wx_bxdh}}</text>
-                    </view>
-                </view>
-                <view class="work-sheet-item">
-                    <text class="work-sheet-bd">报修地址</text>
-                    <view class="work-sheet-ft">
-                        <text>{{detail.wx_bxdd}}</text>
-                    </view>
-                </view>
-                <view class="work-sheet-item">
-                    <text class="work-sheet-bd">申报标题</text>
-                    <view class="work-sheet-ft">
-                        <text>{{detail.wx_bt}}</text>
-                    </view>
-                </view>
-                <view class="work-sheet-item">
-                    <text class="work-sheet-bd">申报内容</text>
-                    <view class="work-sheet-ft">
-                        <text>{{detail.wx_bxnr}}</text>
+                        <text>{{detail.order_time+" 18:30:00"}}</text>
                     </view>
                 </view>
             </view>
         </view>
-
+ <view class="confirm-btn" bindtap="cancelOrder" wx:if="{{detail.state==0}}">
+            <text>取消订单</text>
+        </view>
     </block>
 </view>
