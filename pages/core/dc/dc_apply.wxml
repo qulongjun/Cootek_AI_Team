@@ -18,7 +18,7 @@
             <block wx:for="{{shopList[currentTab].food}}" wx:key="*this">
               <view class="item-ans">
                 <view class="avatar">
-                  <image class="img" src="http://ookzqad11.bkt.clouddn.com/avatar.png"></image>
+                  <image class="img" src="/images/core/dc/dinner.png"></image>
                 </view>
                 <view class="expertInfo">
                   <view class="name">{{item.food}}</view>
