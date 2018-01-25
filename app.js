@@ -184,7 +184,7 @@ App({
   enCodeBase64:function(data){ return this.util.base64.encode(data)},
   cache: {},
   // _server: 'https://team.qulongjun.com',
-  _server: 'http://test.qulongjun.cn:8080',
+  _server: 'https://team.qulongjun.com',
   _user: {
     //微信数据
     wx: {},

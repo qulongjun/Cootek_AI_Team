@@ -7,7 +7,7 @@
   background-position: bottom center;
   /*background-image: url('/images/index/tri.png');*/
   /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/tri.png');
+   background-image: url('http://team.qulongjun.com/images/tri.png'); 
 }
 /**功能导航**/
 .main-core{
@@ -69,22 +69,22 @@
 .main-card-item#kb{
   /*background-image: url('/images/index/kb-bg.png');*/
   /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/kb-bg.png');
+  background-image: url('http://team.qulongjun.com/images/kb-bg.png');
 }
 .main-card-item#ykt{
   /*background-image: url('/images/index/ykt-bg.png');*/
   /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('http://test.qulongjun.cn:8080/images/dc-bg.png');
+  background-image: url('http://team.qulongjun.com/images/dc-bg.png');
 }
 .main-card-item#jy{
   /*background-image: url('/images/index/jy-bg.png');*/
   /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/jy-bg.png');
+  background-image: url('http://team.qulongjun.com/images/jy-bg.png');
 }
 .main-card-item#sdf{
   /*background-image: url('/images/index/sdf-bg.png');*/
   /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/sdf-bg.png');
+  background-image: url('http://team.qulongjun.com/images/sdf-bg.png');
 }
 .main-card-item navigator{
   display: flex;
@@ -298,7 +298,7 @@ page .navigator-hover{
   height: 231rpx;
   /*background-image: url('/images/index/jy-book.png');*/
   /*微信暂不支持静态bgimg文件，改用服务器url*/
-  background-image: url('https://we.cqu.pt/app/images/index/jy-book.png');
+  background-image: url('http://team.qulongjun.com/images/jy-book.png');
   background-size: 100% 100%;
   padding: 5rpx 5rpx 50rpx 30rpx;
   color: #fff;
