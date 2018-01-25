@@ -73,14 +73,12 @@ App({
               typeof response == "function" && response(_this.g_status);
               return;
             }
-            //发送code与微信用户信息，获取学生数据
+            //发送code与微信用户信息，获取员工数据
             wx.request({
               method: 'POST',
               url: _this._server + '/api/user/info',
               data: {
-                code: res.code,
-                key: info.encryptedData,
-                iv: info.iv
+                code: res.code
               },
               header: {
                 'content-type': 'application/x-www-form-urlencoded'

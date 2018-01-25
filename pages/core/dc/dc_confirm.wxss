@@ -166,3 +166,8 @@
 .submit-declare:active{
     opacity: .8;
 }
+.detail-notice{
+  padding-left: 20rpx;
+  padding-top: 20rpx;
+  color: #FF4500;
+}

@@ -121,12 +121,17 @@ Page({
                 wx.showToast({
                   title: '取消成功',
                   icon: 'success',
-                  duration: 1500
+                  duration: 1500,
+                  complete:function(){
+                    setTimeout(function(){
+                      wx.navigateBack();
+                    },1500)
+                  }
                 });
                 // wx.navigateBack();
               } else {
                 wx.hideToast();
-                app.showErrorModal(res.data.message, '绑定失败');
+                app.showErrorModal(res.data.message, '取消失败');
               }
             },
             fail: function (res) {
