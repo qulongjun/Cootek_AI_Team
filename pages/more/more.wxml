@@ -40,7 +40,7 @@
   </view>
 
   <view class="more-list">
-    <navigator url="/pages/more/issues" class="issue-link">
+    <navigator url="/pages/more/issues" wx:if="{{user.we}}" class="issue-link">
       <view class="more-btn">
         <image class="btn-icon" src="/images/more/issue.png"></image>
         <text class="btn-text">反馈</text>

@@ -34,15 +34,36 @@ Page({
       var dateStr = year + "-" + month + "-" + day;
       return dateStr;
     }
+
+    function isLate(){
+      var standard = getDate()+" 16:00:00";
+      var standardDate =new Date(standard);
+      if (standardDate < (new Date())){
+        //只能明天起
+        var curDate = new Date();
+        var nextDate = new Date(curDate.getTime() + 24 * 60 * 60 * 1000);
+        var year = nextDate.getFullYear();
+        var month = nextDate.getMonth() + 1 < 10 ? "0" + (nextDate.getMonth() + 1)
+          : nextDate.getMonth() + 1;
+        var day = nextDate.getDate() < 10 ? "0" + nextDate.getDate() : nextDate
+          .getDate();
+        var dateStr = year + "-" + month + "-" + day;
+        return dateStr;
+      }else{
+        //可以今天
+        return getDate();
+      }
+    }
+
     this.setData({
       'formData.id': app._user.we.id,
       'formData.foodId':option.id,
       'formData.name': app._user.we.realName,
-      'formData.time': getDate()+" 18:30:00",
+      'formData.time': isLate()+" 18:30:00",
       'formData.food': option.name,
       'formData.shop': option.shop,
       'formData.category': option.category,
-      'start': getDate()
+      'start': isLate()
     });
   },
   bindDateChange:function(e){
@@ -78,7 +99,14 @@ Page({
                 wx.showToast({
                   title: '订餐成功',
                   icon: 'success',
-                  duration: 2000
+                  duration: 2000,
+                  complete:function(){
+                    setTimeout(function(){
+                      wx.navigateBack({
+                        delta: 2
+                      });
+                    },2000);
+                  }
                 });
                 // wx.navigateBack();
               }else{
