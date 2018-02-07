@@ -8,6 +8,7 @@
     </block>
   </view>
   <block wx:else>
+    <form bindsubmit="formSubmit" report-submit="true">
     <view class="repair-detail">
       <view class="reporter-user reporter-detail-item">
         <text class="reporter-detail-name">订餐人</text>
@@ -46,8 +47,12 @@
     <view class='detail-notice'>
       <text>注意：每日16：00前可预订当日晚餐。</text>
     </view>
-    <view class="submit-declare" bindtap="submitApply">
-      <text>完成订餐</text>
+    <view>
+        <button class="submit-declare" formType="submit" >完成订餐</button>
     </view>
+    <!-- <view class="submit-declare" bindtap="submitApply"> -->
+      <!-- <text>完成订餐</text> -->
+    <!-- </view> -->
+    </form>
   </block>
 </view>
