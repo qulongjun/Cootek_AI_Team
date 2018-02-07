@@ -14,9 +14,8 @@ Page({
   },
   onLoad:function(option){
     var _this=this;
-    console.log(option);
     _this.setData({
-      change_bind: option.change_bind
+      change_bind: option.change_bind||false
     });
   },
   onReady: function(){

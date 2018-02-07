@@ -21,7 +21,7 @@
   </swiper>
     <view class="fix_tip {{disabledItemTap?'active':''}}">
         <text wx:if="{{remind == '未绑定'}}">请先绑定帐号</text>
-        <text wx:else>{{(user.teacher && !offline) ? '无权限' : '该服务不可用'}}</text>
+        <text wx:else>该服务尚未开放</text>
     </view>
   <view wx:if="{{remind}}" class="remind-box">
     <image wx:if="{{remind == '加载中'}}" class="remind-img" src="/images/index/loading.gif"></image>

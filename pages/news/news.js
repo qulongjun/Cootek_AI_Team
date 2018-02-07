@@ -24,25 +24,25 @@ Page({
     disabledRemind: false
   },
   onLoad: function(){
-    if(app._user.is_bind){
-      this.setData({
-        user_type: !app._user.teacher ? 'student' : 'teacher'
-      });
-    }else{
-      this.setData({
-        user_type: 'guest',
-        'active.id': 5,
-        'active.type': 'new'
-      });
-    }
-    this.setData({
-      'loading': true,
-      'active.data': [],
-      'active.showMore': true,
-      'active.remind': '上滑加载更多',
-      'page': 0
-    });
-    this.getNewsList();
+    // if(app._user.is_bind){
+    //   this.setData({
+    //     user_type: !app._user.teacher ? 'student' : 'teacher'
+    //   });
+    // }else{
+    //   this.setData({
+    //     user_type: 'guest',
+    //     'active.id': 5,
+    //     'active.type': 'new'
+    //   });
+    // }
+    // this.setData({
+    //   'loading': true,
+    //   'active.data': [],
+    //   'active.showMore': true,
+    //   'active.remind': '上滑加载更多',
+    //   'page': 0
+    // });
+    // this.getNewsList();
   },
   //下拉更新
   onPullDownRefresh: function(){
