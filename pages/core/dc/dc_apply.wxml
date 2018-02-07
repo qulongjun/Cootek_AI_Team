@@ -17,14 +17,16 @@
            <scroll-view scroll-y="true" class="scoll-h">
             <block wx:for="{{shopList[currentTab].food}}" wx:key="*this">
               <view class="item-ans">
-                <view class="avatar">
+                <!-- <view class="avatar">
                   <image class="img" src="/images/core/dc/dinner.png"></image>
-                </view>
+                </view> -->
                 <view class="expertInfo">
                   <view class="name">{{item.food}}</view>
-                  <view class="tag">所属分类：{{item.category.category
+                  <view class="tag">{{item.desp
 }}</view>
-                  <view class="answerHistory">共 {{item.count}} 次点过 </view>
+                  <view class="tag">分类：{{item.category.category
+}}</view>
+                  <view class="answerHistory">{{item.count}}人点过该菜品 </view>
                 </view>
                 <navigator url="/pages/core/dc/dc_confirm?id={{item.id}}&&name={{item.food}}&&shop={{shopList[currentTab].shop}}&&category={{item.category.category}}" class="askBtn">选择</navigator>
               </view>
